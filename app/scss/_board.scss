@@ -81,6 +81,10 @@
     height: 5vh;
   }
 
+  &:hover {
+    background: pink;
+  }
+
   // @include breakpoint-up(large) {
   //   width: 5vw;
   //   height: 5vw;
