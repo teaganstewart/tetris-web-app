@@ -7,11 +7,11 @@
     height: 20vh;
 
     @include breakpoint-down(small) {
-        margin-top: 60%;
+        margin-top: 33vh;
     }
 
     @include breakpoint-up-height(medium, small) {
-        margin-top: 34vh;
+        margin-top: 39vh;
     }
 
     @include breakpoint-up(medium) {

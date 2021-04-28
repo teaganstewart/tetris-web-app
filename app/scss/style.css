@@ -54,7 +54,7 @@ body {
 
 @media (max-width: 39.9375em) {
   .board {
-    margin-top: -20%;
+    margin-top: -12vh;
   }
 }
 
@@ -159,13 +159,13 @@ body {
 
 @media (max-width: 39.9375em) {
   .score {
-    margin-top: 60%;
+    margin-top: 33vh;
   }
 }
 
 @media (min-height: 46.25em) {
   .score {
-    margin-top: 34vh;
+    margin-top: 39vh;
   }
 }
 

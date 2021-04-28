@@ -38,7 +38,7 @@
   transform: translate(-50%, -50%);
 
   @include breakpoint-down(small) {
-    margin-top: -20%;
+    margin-top: -12vh;
   }
 
   @include breakpoint-up-height(medium, small) {
