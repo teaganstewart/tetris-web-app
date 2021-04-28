@@ -1,0 +1,97 @@
+.score {
+    position: fixed;
+    border: 0.5vh solid white;
+    text-align: center;
+
+    width: 32vh;
+    height: 20vh;
+
+    @include breakpoint-down(small) {
+        margin-top: 60%;
+    }
+
+    @include breakpoint-up-height(medium, small) {
+        margin-top: 34vh;
+    }
+
+    @include breakpoint-up(medium) {
+        width: 20vh;
+        height: 72vh;
+        margin-left: 0%;
+        margin-top: 0%;
+        transform: translate(50%, -50%);
+    }
+
+    @include breakpoint-up(large) {
+        width: 41vh;
+        height: 80vh;
+        margin-left: -20%;
+    }
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: palevioletred;
+}
+
+#preview-board {
+    display: grid;
+    justify-content: center;
+    padding-top: 1vw;
+    grid-template-rows: repeat(4, 3vh);
+    grid-template-columns: repeat(6, 3vh);
+
+    // @include breakpoint-up(large) {
+    //     grid-template-rows: repeat(4, 5vw);
+    //     grid-template-columns: repeat(6, 5vw);
+    // }
+
+    // @include breakpoint-up(mlarge) {
+    //     grid-template-rows: repeat(4, 3vw);
+    //     grid-template-columns: repeat(6, 3vw);
+    // }
+
+    // @include breakpoint-up(xlarge) {
+    //     grid-template-rows: repeat(4, 2vw);
+    //     grid-template-columns: repeat(6, 2vw);
+    //     padding-top: 0vw;
+    // }
+}
+
+.score-cell {
+    background-color: rgb(251, 245, 251);
+    border: 0.5px solid gray;
+    text-align: center;
+
+    width: 3vh;
+    height: 3vh;
+
+    // @include breakpoint-up(large) {
+    //     width: 5vw;
+    //     height: 5vw;
+    // }
+
+    // @include breakpoint-up(mlarge) {
+    //     width: 3vw;
+    //     height: 3vw;
+    // }
+
+    // @include breakpoint-up(xlarge) {
+    //     width: 2vw;
+    //     height: 2vw;
+    // }
+
+    text-align: center;
+}
+
+.preview-title {
+    color: white;
+    font-family: "Public Sans";
+    font-size: 24px;
+
+    @include breakpoint-down(small) {
+        font-size: 14px;
+    }
+    font-weight: 300;
+    padding: 2vw;
+}
