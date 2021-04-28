@@ -60,7 +60,7 @@ body {
 
 @media (min-height: 46.25em) {
   .board {
-    margin-top: -20%;
+    margin-top: -24%;
   }
 }
 
@@ -182,9 +182,9 @@ body {
 
 @media (min-width: 60em) {
   .score {
-    width: 36vh;
+    width: 33vh;
     height: 80vh;
-    margin-left: -18%;
+    margin-left: -10vh;
   }
 }
 

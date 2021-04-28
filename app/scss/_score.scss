@@ -23,9 +23,9 @@
     }
 
     @include breakpoint-up(large) {
-        width: 36vh;
+        width: 33vh;
         height: 80vh;
-        margin-left: -18%;
+        margin-left: -10vh;
     }
 
     @include breakpoint-up(xlarge) {
