@@ -60,22 +60,22 @@ body {
 
 @media (min-height: 46.25em) {
   .board {
-    margin-top: -30%;
+    margin-top: -20%;
   }
 }
 
 @media (min-width: 40em) {
   .board {
     margin-top: 0%;
-    -webkit-transform: translate(-80%, -50%);
-            transform: translate(-80%, -50%);
+    -webkit-transform: translate(-82%, -50%);
+            transform: translate(-82%, -50%);
   }
 }
 
 @media (min-width: 60em) {
   .board {
-    -webkit-transform: translate(-105%, -50%);
-            transform: translate(-105%, -50%);
+    -webkit-transform: translate(-100%, -50%);
+            transform: translate(-100%, -50%);
   }
 }
 
@@ -165,7 +165,7 @@ body {
 
 @media (min-height: 46.25em) {
   .score {
-    margin-top: 39vh;
+    margin-top: 34vh;
   }
 }
 
@@ -173,7 +173,7 @@ body {
   .score {
     width: 20vh;
     height: 72vh;
-    margin-left: 0%;
+    margin-left: -2%;
     margin-top: 0%;
     -webkit-transform: translate(50%, -50%);
             transform: translate(50%, -50%);
@@ -182,9 +182,17 @@ body {
 
 @media (min-width: 60em) {
   .score {
+    width: 36vh;
+    height: 80vh;
+    margin-left: -18%;
+  }
+}
+
+@media (min-width: 120em) {
+  .score {
     width: 41vh;
     height: 80vh;
-    margin-left: -20%;
+    margin-left: -10%;
   }
 }
 

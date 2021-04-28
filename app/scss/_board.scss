@@ -42,16 +42,16 @@
   }
 
   @include breakpoint-up-height(medium, small) {
-    margin-top: -30%;
+    margin-top: -20%;
   }
 
   @include breakpoint-up(medium) {
     margin-top: 0%;
-    transform: translate(-80%, -50%);
+    transform: translate(-82%, -50%);
   }
 
   @include breakpoint-up(large) {
-    transform: translate(-105%, -50%);
+    transform: translate(-100%, -50%);
   }
 
   @include breakpoint-up(mlarge) {

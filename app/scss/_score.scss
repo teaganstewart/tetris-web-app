@@ -11,21 +11,27 @@
     }
 
     @include breakpoint-up-height(medium, small) {
-        margin-top: 39vh;
+        margin-top: 34vh;
     }
 
     @include breakpoint-up(medium) {
         width: 20vh;
         height: 72vh;
-        margin-left: 0%;
+        margin-left: -2%;
         margin-top: 0%;
         transform: translate(50%, -50%);
     }
 
     @include breakpoint-up(large) {
+        width: 36vh;
+        height: 80vh;
+        margin-left: -18%;
+    }
+
+    @include breakpoint-up(xlarge) {
         width: 41vh;
         height: 80vh;
-        margin-left: -20%;
+        margin-left: -10%;
     }
 
     top: 50%;
