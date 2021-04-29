@@ -116,10 +116,6 @@ body {
   }
 }
 
-.cell:hover {
-  background: pink;
-}
-
 .white {
   background-color: #fbf5fb;
 }
