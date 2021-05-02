@@ -1,9 +1,10 @@
 class Cell {
 
-    constructor(x, color, active) {
+    constructor(x, color, active, set) {
         this.x = x;
         this.color = color;
         this.active = active;
+        this.set = set;
     }
 
     updateColor(color) {
@@ -18,6 +19,14 @@ class Cell {
         this.active = false;
     }
 
+    setBlock() {
+        this.set = true;
+    }
+
+    unsetBlock() {
+        this.set = false;
+    }
+
 }
 
 var boardArr = [];
@@ -30,12 +39,7 @@ function initialiseBoard() {
         let cell = document.createElement("div");
         cell.classList.add("cell");
 
-        if (i == 4) {
-            boardArr.push(new Cell(i, "red", true));
-        }
-        else {
-            boardArr.push(new Cell(i, "white", false));
-        }
+        boardArr.push(new Cell(i, "white", false));
         
         cell.id = "cell-" + i;
         board.appendChild(cell);
@@ -59,12 +63,21 @@ function runTetris() {
     
 }
 
+function newBlock() {
+    boardArr[4] = new Cell(4, "red", true, false);
+    var cell = document.getElementById("cell-4");
+    cell.classList.add("red");
+}
+
 function updateBlock() {
     for (var i = 0; i < 128; i++) {
         if (boardArr[i].active) {
             var nextX = boardArr[i].x + 8;
             if (nextX >= 128) {
-                nextX = 4;
+                setBlock(i);
+                newBlock();
+                break;
+              
             }
             
             moveCell(i, nextX);
@@ -74,12 +87,18 @@ function updateBlock() {
     }
 }
 
+function setBlock(x) {
+    boardArr[x] = new Cell(x, "red", false, true);
+    var cell = document.getElementById("cell-" + x);
+    cell.classList.add("red");
+}
+
 function moveCell(x, nextX) {
-    boardArr[x] = new Cell(x, "white", false);
+    boardArr[x] = new Cell(x, "white", false, false);
     var cell = document.getElementById("cell-" + x);
     cell.classList.remove("red");
     
-    boardArr[nextX] = new Cell(nextX, "red", true);
+    boardArr[nextX] = new Cell(nextX, "red", true, false);
     cell = document.getElementById("cell-" + nextX);
     cell.classList.add("red");
 }
@@ -136,7 +155,7 @@ function moveRight() {
 
     initialiseBoard();
     initialisePreview();
-
+    newBlock();
     window.addEventListener("keydown", onKeyPress);
 
     setInterval(runTetris, 1000);
