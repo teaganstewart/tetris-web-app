@@ -101,7 +101,7 @@
 
 // Copied from https://codepen.io/toni-leigh/pen/oclKj
 $colours: ("white", rgb(251, 245, 251)), ("blue", #5eade2), ("yellow", #f6e651), ("green", #5fdf48), ("red", #e74c3c),
-  ("purple", #bc66df) ("orange", #f8953f), ("darkblue", #2337e9);
+  ("purple", rgb(188, 102, 223)), ("orange", #f8953f), ("darkblue", #2337e9);
 
 @each $colour, $hex in $colours {
   .#{$colour} {

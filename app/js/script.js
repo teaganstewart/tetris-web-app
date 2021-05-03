@@ -1,14 +1,17 @@
 class Cell {
 
-    constructor(x, color, active, set) {
-        this.x = x;
+    constructor( color, active, set) {
         this.color = color;
         this.active = active;
         this.set = set;
     }
 
-    updateColor(color) {
+    setColor(color) {
         this.color = color;
+    }
+
+    removeColor() {
+        this.color = "white";
     }
 
     setActive() {
@@ -19,15 +22,36 @@ class Cell {
         this.active = false;
     }
 
-    setBlock() {
+    setSet() {
         this.set = true;
     }
 
     unsetBlock() {
         this.set = false;
     }
-
 }
+
+function findColor(colorNo) {
+    switch (colorNo) {
+        case 0:
+            return "blue";
+        case 1:
+            return "yellow";
+        case 2:
+            return "green";
+        case 3:
+            return "red";
+        case 4:
+            return "purple";
+        case 5:
+            return "orange";
+        case 6:
+            return "darkblue";
+        default:
+            break;
+    }
+}
+
 
 var boardArr = [];
 
@@ -39,7 +63,7 @@ function initialiseBoard() {
         let cell = document.createElement("div");
         cell.classList.add("cell");
 
-        boardArr.push(new Cell(i, "white", false));
+        boardArr.push(new Cell( "white", false, false));
         
         cell.id = "cell-" + i;
         board.appendChild(cell);
@@ -60,25 +84,34 @@ function initialisePreview() {
 
 function runTetris() {
     updateBlock();
-    
 }
 
 function newBlock() {
-    boardArr[4] = new Cell(4, "red", true, false);
+    var random = Math.floor((Math.random() * 7));
+    boardArr[4].setActive();
+    boardArr[4].setColor(findColor(random));
+
     var cell = document.getElementById("cell-4");
-    cell.classList.add("red");
+    cell.classList.add(boardArr[4].color);
 }
 
 function updateBlock() {
     for (var i = 0; i < 128; i++) {
         if (boardArr[i].active) {
-            var nextX = boardArr[i].x + 8;
-            if (nextX >= 128) {
+            var nextX = i + 8;
+            if (canSetBlock(nextX)) {
                 setBlock(i);
-                newBlock();
+                clearRows();
+
+                if (i >= 8) {
+                    newBlock();
+                }
+                else {
+                    console.log("game over ay");
+                }
                 break;
               
-            }
+            }  
             
             moveCell(i, nextX);
 
@@ -87,20 +120,67 @@ function updateBlock() {
     }
 }
 
+function clearRows() {
+
+    var count = 0;
+    var clear = false;
+    while (!clear) {
+        
+    
+        for (let i = 0; i < 128; i++) {
+            if (boardArr[i].set) { count++; }
+            if (i % 8 == 7) {
+                if (count == 8) {
+                    clearRow(i);
+                    break;
+                }
+
+                count = 0;
+            }
+        }
+
+        clear = true;
+    }
+
+    console.log("hmm");
+}
+
+function clearRow(i) {
+    for (var x = i; x >= 8; x--) {
+        var cell = document.getElementById("cell-" + x);
+        cell.classList.remove(boardArr[x].color);
+        boardArr[x].setColor(boardArr[x - 8].color);
+        cell.classList.add(boardArr[x].color);
+        if (!boardArr[x - 8].set) {
+            boardArr[x].unsetBlock();
+        }
+    }
+    // for(var 0)
+}
+
+function canSetBlock(nextX) {
+    if (nextX >= 128 || boardArr[nextX].set) {
+        return true;
+    }
+
+    return false;
+}
+
 function setBlock(x) {
-    boardArr[x] = new Cell(x, "red", false, true);
-    var cell = document.getElementById("cell-" + x);
-    cell.classList.add("red");
+    boardArr[x].setSet();
+    boardArr[x].setInactive();
 }
 
 function moveCell(x, nextX) {
-    boardArr[x] = new Cell(x, "white", false, false);
+    boardArr[x].setInactive();
     var cell = document.getElementById("cell-" + x);
-    cell.classList.remove("red");
+    cell.classList.remove(boardArr[x].color);
     
-    boardArr[nextX] = new Cell(nextX, "red", true, false);
+    boardArr[nextX].setActive();
     cell = document.getElementById("cell-" + nextX);
-    cell.classList.add("red");
+    cell.classList.add(boardArr[x].color);
+    boardArr[nextX].setColor(boardArr[x].color);
+    boardArr[x].removeColor();
 }
 
 function onKeyPress(event) {
@@ -123,8 +203,8 @@ function moveLeft() {
     for (var i = 0; i < 128; i++) {
         if (boardArr[i].active) {
 
-            var nextX = boardArr[i].x - 1;
-            if (i % 8 == 0) {
+            var nextX = i - 1;
+            if (i % 8 == 0 || canSetBlock(nextX)) {
                 break;
             }
             
@@ -139,8 +219,8 @@ function moveRight() {
     for (var i = 0; i < 128; i++) {
         if (boardArr[i].active) {
 
-            var nextX = boardArr[i].x + 1;
-            if (nextX  % 8 == 0) {
+            var nextX = i + 1;
+            if (nextX  % 8 == 0 || canSetBlock(nextX)) {
                 break;
             }
             

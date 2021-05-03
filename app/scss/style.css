@@ -136,8 +136,12 @@ body {
   background-color: #e74c3c;
 }
 
-.purple, #bc66df {
-  background-color: "orange", #f8953f;
+.purple {
+  background-color: #bc66df;
+}
+
+.orange {
+  background-color: #f8953f;
 }
 
 .darkblue {
